@@ -1,0 +1,12 @@
+[workspace]
+members = [
+    "contract_one",
+    "contract_two",
+    "traits",
+]
+resolver = "2"
+
+[workspace.package]
+authors = ["Dang Thanh Tung <dttung1412@gmail.com>"]
+edition = "2021"
+repository = "https://github.com/dang1412/ink-samples/crosscontract"
