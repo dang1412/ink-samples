@@ -8,20 +8,22 @@ mod contract_two {
     /// Add new fields to the below struct in order
     /// to add new static storage fields to your contract.
     #[ink(storage)]
-    pub struct ContractTwo {}
+    pub struct ContractTwo {
+        addr_one: AccountId
+    }
 
     impl ContractTwo {
         /// Constructor that initializes empty struct
         #[ink(constructor)]
-        pub fn new() -> Self {
-            Self {}
+        pub fn new(addr_one: AccountId) -> Self {
+            Self { addr_one }
         }
 
         /// Cross-contract call.
         /// Simply returns the current value of contract_one `bool`.
         #[ink(message)]
-        pub fn other_get(&self, addr: AccountId) -> bool {
-            ContractOneRef::get(&addr)
+        pub fn other_get(&self) -> bool {
+            ContractOneRef::get(&self.addr_one)
         }
 
         /// Cross-contract call
