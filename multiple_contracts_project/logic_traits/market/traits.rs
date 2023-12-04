@@ -18,9 +18,19 @@ pub type MarketRef = dyn MarketTraitRef;
 /// Actually only methods used by other contract (cross-contract call) are needed.
 #[openbrush::trait_definition]
 pub trait MarketTraitRef {
+    /// Mint
     #[ink(message)]
-    fn mint(&mut self);
+    fn mint(&mut self) -> Result<(), MarketError>;
 
+    /// List NFT for sale
     #[ink(message)]
-    fn list_for_sale(&mut self, nft_id: Id, price: Balance);
+    fn list_for_sale(&mut self, nft_id: Id, price: Balance) -> Result<(), MarketError>;
+
+    /// Buy the listed NFT
+    #[ink(message, payable)]
+    fn buy(&mut self, nft_id: Id) -> Result<(), MarketError>;
+
+    /// Get list of listed NFT
+    #[ink(message, payable)]
+    fn get_list(&self, from: u32, to: u32) -> Vec<Id>;
 }

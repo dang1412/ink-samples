@@ -28,4 +28,6 @@ pub enum MarketError {
     NotOwner,
     /// Pay not enough money
     NotEnoughPay,
+    /// Already minted
+    AlreadyMinted,
 }

@@ -2,7 +2,7 @@ use openbrush::traits::Storage;
 use crate::market::types::{ MarketData, MarketError };
 
 #[openbrush::trait_definition]
-pub trait PixelTrait:
+pub trait MarketTrait:
     Storage<MarketData>
     // + Storage<ownable::Data>
     // + Storage<metadata::Data>
@@ -11,14 +11,28 @@ pub trait PixelTrait:
     // + psp34::extensions::metadata::Internal
     + Internal
 {
-    /// Mint one or more pixels
-    #[ink(message, payable)]
-    fn pick(&mut self, pixels: Vec<(u16, u128)>) -> Result<(), MarketError> {
-        
-        for (pixel_id, sub_pixels) in pixels.iter() {
-
-        }
+    /// Mint
+    #[ink(message)]
+    fn mint(&mut self) -> Result<(), MarketError> {
         Ok(())
+    }
+
+    /// List NFT for sale
+    #[ink(message)]
+    fn list_for_sale(&mut self, nft_id: Id, price: Balance) -> Result<(), MarketError> {
+        Ok(())
+    }
+
+    /// Buy the listed NFT
+    #[ink(message, payable)]
+    fn buy(&mut self, nft_id: Id) -> Result<(), MarketError> {
+        Ok(())
+    }
+
+    /// Get list of listed NFT
+    #[ink(message, payable)]
+    fn get_list(&self, from: u32, to: u32) -> Vec<Id> {
+        Vec::default()
     }
 }
 

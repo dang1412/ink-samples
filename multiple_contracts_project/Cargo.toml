@@ -1,8 +1,8 @@
 [workspace]
 members = [
-	"psp34_market",
-	# "psp22",
-	# "logic",
+	"psp34_market", # contract PSP34
+	# "other_contract",
+	"logic_traits", # main implementation of all contracts
 ]
 resolver = "2"
 
